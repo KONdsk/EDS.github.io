@@ -1,37 +1,103 @@
-## Welcome to GitHub Pages
+# A 素数
+```Cpp
+int main()
+{
+  int n;
+  cin >> n;
+  for (int i = 0; i < n; i++)
+  {
+    int t, sign = 0;
+    cin >> t;
+    for (int i = 2; i < t; i++)
+      if (t % i == 0)
+        sign--;
 
-You can use the [editor on GitHub](https://github.com/KONdsk/EDS.github.io/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+    if (sign < 0 || t == 0 || t == 1)
+      cout << "No" << endl;
+    else
+      cout << "Yes" << endl;
+  }
+  
+  return 0;
+}
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+# B 三角形
+```Cpp
 
-### Jekyll Themes
+#include <iostream>
+using namespace std;
+int main()
+{
+  int a, b, c;
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/KONdsk/EDS.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+  cin >> a >> b >> c;
+  if (a < b + c && a > abs(b - c))
+  {
+    double p = 0.5 * (a + b + c);
+    double ans = sqrt((p - c) * (p - a) * (p - b) * p);
+    printf("%.2f", ans);
+  }
+  else
+  {
+    cout << "Fail";
+  }
 
-### Support or Contact
+  return 0;
+}
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+# D 鸡兔同笼
+```Cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int a, b, m, n;
+  cin >> n >> m;
+  if (m == 0 || m % 2 != 0) {
+    cout << "False!";
+    return 0;
+  }
+  a = (4 * n - m) / 2;
+  b = (m - 2 * n) / 2;
+  if (a < 0 || b < 0) {
+    cout << "False!";
+    return 0;
+  }
+  cout << a << " " << b;
+
+  return 0;
+}
+```
+
+# H 结构体
+```Cpp
+#include <iostream>
+using namespace std;
+
+struct student {
+  string name;
+  int grade;
+} a;
+
+int main()
+{
+  student a[100];
+  int n, sum = 0;
+  cin >> n;
+
+  for (int i = 0; i < n; i++) {
+    cin >> a[i].name >> a[i].grade;
+    sum += a[i].grade;
+  }
+  int ave = sum / n;
+  for (int i = 0; i < n; i++) {
+    if (a[i].grade >= ave)
+      cout << a[i].name << " " << a[i].grade << endl;
+  }
+
+  return 0;
+}
+```
